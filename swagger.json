@@ -1,0 +1,486 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "TasksDJ API",
+        "description": "TasksDJ API",
+        "termsOfService": "https://www.google.com/policies/terms/",
+        "contact": {
+            "email": "meechanic.design@gmail.com"
+        },
+        "license": {
+            "name": "BSD License"
+        },
+        "version": "v1"
+    },
+    "basePath": "/",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ],
+    "paths": {
+        "/api-token-auth/": {
+            "post": {
+                "operationId": "api-token-auth_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AuthToken"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AuthToken"
+                        }
+                    }
+                },
+                "tags": [
+                    "api-token-auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/task-tags/": {
+            "get": {
+                "operationId": "task-tags_list",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "A search term.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ordering",
+                        "in": "query",
+                        "description": "Which field to use when ordering the results.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TaskTag"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "task-tags"
+                ]
+            },
+            "post": {
+                "operationId": "task-tags_create",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TaskTag"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TaskTag"
+                        }
+                    }
+                },
+                "tags": [
+                    "task-tags"
+                ]
+            },
+            "parameters": []
+        },
+        "/task-tags/{id}/": {
+            "get": {
+                "operationId": "task-tags_read",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TaskTag"
+                        }
+                    }
+                },
+                "tags": [
+                    "task-tags"
+                ]
+            },
+            "put": {
+                "operationId": "task-tags_update",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TaskTag"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TaskTag"
+                        }
+                    }
+                },
+                "tags": [
+                    "task-tags"
+                ]
+            },
+            "patch": {
+                "operationId": "task-tags_partial_update",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TaskTag"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TaskTag"
+                        }
+                    }
+                },
+                "tags": [
+                    "task-tags"
+                ]
+            },
+            "delete": {
+                "operationId": "task-tags_delete",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "task-tags"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this task tag.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/tasks/": {
+            "get": {
+                "operationId": "tasks_list",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "human_description",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "A search term.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ordering",
+                        "in": "query",
+                        "description": "Which field to use when ordering the results.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Task"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "tasks"
+                ]
+            },
+            "post": {
+                "operationId": "tasks_create",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                },
+                "tags": [
+                    "tasks"
+                ]
+            },
+            "parameters": []
+        },
+        "/tasks/{id}/": {
+            "get": {
+                "operationId": "tasks_read",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                },
+                "tags": [
+                    "tasks"
+                ]
+            },
+            "put": {
+                "operationId": "tasks_update",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                },
+                "tags": [
+                    "tasks"
+                ]
+            },
+            "patch": {
+                "operationId": "tasks_partial_update",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                },
+                "tags": [
+                    "tasks"
+                ]
+            },
+            "delete": {
+                "operationId": "tasks_delete",
+                "description": "API endpoint that represents a list of objects.",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "tasks"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this task.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "AuthToken": {
+            "required": [
+                "username",
+                "password"
+            ],
+            "type": "object",
+            "properties": {
+                "username": {
+                    "title": "Username",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "password": {
+                    "title": "Password",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "token": {
+                    "title": "Token",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                }
+            }
+        },
+        "TaskTag": {
+            "required": [
+                "key",
+                "value",
+                "task"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "key": {
+                    "title": "Key",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "value": {
+                    "title": "Value",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "task": {
+                    "title": "Task",
+                    "type": "integer"
+                }
+            }
+        },
+        "Task": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string"
+                },
+                "human_description": {
+                    "title": "Human description",
+                    "type": "string"
+                },
+                "machine_description": {
+                    "title": "Machine description",
+                    "type": "string"
+                },
+                "supercategory": {
+                    "title": "Supercategory",
+                    "type": "string"
+                },
+                "category": {
+                    "title": "Category",
+                    "type": "string"
+                },
+                "subcategory": {
+                    "title": "Subcategory",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
