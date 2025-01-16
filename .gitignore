@@ -164,3 +164,4 @@ cython_debug/
 
 # additional
 local.sh
+pyvenv.cfg
