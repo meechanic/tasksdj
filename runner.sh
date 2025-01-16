@@ -27,5 +27,6 @@ if [ ! -z "$CREATE_SUPERUSER" ]
   fi
   "$MAINDIRECTORY"/manage.py createsuperuser --noinput
 fi
-
-uwsgi --plugins=python --http-socket=0.0.0.0:"$PORT" --pidfile=/tmp/tasksdj.pid --home="$VENVPATH" --module=tasksdj.wsgi:application --chdir="$MAINDIRECTORY" --static-map /static="$SROOT"
+if [ -z "$ONLYPREPARE" ]
+  then uwsgi --plugins=python --http-socket="0.0.0.0:${PORT}" --pidfile="${PIDFILEDIRECTORY}/${PROJECT_NAME}.pid" --home="$VENVPATH" --module="${DJANGO_PROJECT_NAME}.wsgi:application" --chdir="$MAINDIRECTORY" --static-map /static="$SROOT"
+fi
